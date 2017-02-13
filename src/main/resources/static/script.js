@@ -17,6 +17,10 @@ angular.module('ngRouteExample', ['ngRoute', 'ngResource'])
      $scope.params = $routeParams;
      
      $scope.message = "";
+     $http.get('/principal').then(function(response){
+			$rootScope.principal = response.data;
+			$scope.principal = response.data;
+	}, function(response){});
      
 		$http({
 			  method: 'GET',
@@ -91,8 +95,8 @@ angular.module('ngRouteExample', ['ngRoute', 'ngResource'])
 .config(function($routeProvider, $locationProvider) {
 	$routeProvider
 	  .when('/', {
-		    templateUrl: 'app/users1.html',
-		    controller: 'UsersController'
+		    templateUrl: 'app/tweeter.html',
+		    controller: 'TweetController'
 		  })
   .when('/users/:follow', {
     templateUrl: 'app/users1.html',
