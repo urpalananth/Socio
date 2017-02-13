@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="socioApp">
+	<head>
+		<title>Fragments</title>
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/angular.js"></script>
+		<script type="text/javascript" src="js/angular-resource.js"></script>
+		<script type="text/javascript" src="js/angular-route.min.js"></script>
+		<script src="js/app/socio-main.js"></script>
+		<style type="text/css">
+/* 		body {
+			padding-top: 50px;
+		} */
+		
+		.starter-template {
+			padding: 40px 15px;
+			text-align: center;
+		}
+		
+		.btn-left {
+			text-align: left;
+			left: 24px;
+			position: absolute;
+			bottom: 27px;
+		}
+	</style>
+	</head>
+
+<body>
+<nav class="navbar navbar-inverse " th:fragment="navbar1">
+			  <div class="container-fluid">
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>                        
+			      </button>
+			      <a class="navbar-brand" href="/">SociO</a>
+			    </div>
+			    <div class="collapse navbar-collapse" id="myNavbar">
+			      <ul class="nav navbar-nav">
+			        <li class="active"><a href="/">Home</a></li>
+			        <li><a href="/tweets">Tweets</a></li>
+			        <li><a href="/following">Following</a></li>
+			        <li><a href="/followers">Followers</a></li>
+			      </ul>
+			      <form class="navbar-form navbar-right" role="search">
+			        <div class="form-group input-group">
+			          <input type="text" class="form-control" placeholder="Search.."/>
+			          <span class="input-group-btn">
+			            <button class="btn btn-default" type="button">
+			              <span class="glyphicon glyphicon-search"></span>
+			            </button>
+			          </span>        
+			        </div>
+			      </form>
+			      <ul class="nav navbar-nav navbar-right">
+			        <li><a href="#" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			          <span class="glyphicon glyphicon-user"></span> My Account<span class="caret"></span></a>
+			          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		            <li><a href="#">Settings</a></li>
+<!-- 			            <li><a href="#">Privacy</a></li> -->
+			            <li role="separator" class="divider"></li>
+			            <li><a href="/logout">Logout</a></li>
+			          </ul>
+			           </li>
+			      </ul>
+			    </div>
+			  </div>
+			</nav>
+			
+<div data-ng-view></div>
+	This is main.html
+	{{msg}}
+</body>
+</html>

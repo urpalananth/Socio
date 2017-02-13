@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" ng-app="socioApp">
+	<head th:replace="fragments :: head(title='Follow Colleague')"></head>
+<body>
+<script src="js/app/users.js" th:inline="javascript"></script>
+<div class="container text-center" th:replace="fragments :: navbar1"></div>
+	<div class="container text-center">
+		<div class="row" ng-controller="UserProfileCtrl">
+			<div class="alert alert-success fade in alert-dismissable" ng-show="{{showSuccess}}">
+				<strong>Success!</strong> <p>{{successMessage}}</p>
+			</div>
+			<div th:replace="fragments :: profileFragment"></div>
+			<div class="col-sm-7">
+		      <div class="row">
+		        <div class="col-sm-12">
+		          <div class="panel panel-default text-left">
+		            <div class="panel-body">
+		              <p contenteditable="true">Status: Feeling Blue</p>
+		              <button type="button" class="btn btn-default btn-sm">
+		                <span class="glyphicon glyphicon-thumbs-up"></span> Like
+		              </button>     
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+				<div class="row" ng-repeat="profile in userProfile">
+					<div class="col-sm-3">
+						<div class="well">
+							<p>{{profile.name}}</p>
+							<img src="images/profile-default.png" class="img-circle" height="55" width="55"
+								alt="Avatar"/>
+						</div>
+					</div>
+					<div class="col-sm-9">
+						<div class="well">
+							<p>Just Forgot that I had to mention something about someone
+								to someone about how I forgot something, but now I forgot it.
+								Ahh, forget it! Or wait. I remember.... no I don't.</p>
+							<a href="#" class="btn btn-default btn-xs btn-left" role="button" ng-click="follow($index)"><span
+								class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;Follow</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div th:replace="fragments :: eventsFragment"></div>
+		</div>
+	</div>
+
+<footer class="container-fluid text-center">
+ <p>Footer Text</p>
+</footer>
+</body>
+</html>
