@@ -36,7 +36,9 @@ public class TweetsController {
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody Collection<Tweet> getTweets(@PathVariable String userId){
 		this.validateUser(userId);
-		return this.tweetRepo.findTweetsByTweeter(userRepo.findByName(userId).getId());
+		Collection<Tweet> tweets = this.tweetRepo.findTweetsByUser(userRepo.findByName(userId).getId());
+		tweets.addAll(userRepo.findByName(userId).getTweets());
+		return tweets;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)

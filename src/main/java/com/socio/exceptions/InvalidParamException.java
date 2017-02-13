@@ -4,14 +4,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.UNAUTHORIZED)
-public class UserUnauthorizedException extends RuntimeException {
+public class InvalidParamException extends RuntimeException {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public UserUnauthorizedException() {
+	public InvalidParamException() {
 	}
-	public UserUnauthorizedException(String userId) {
-		super("User is unauthorized to access" + userId + "'.");
-	}	
+	public InvalidParamException(String userId) {
+		super("Un authorized access'" + userId + "'.");
+	}
+	
 }

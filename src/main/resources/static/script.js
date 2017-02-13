@@ -38,6 +38,13 @@ angular.module('ngRouteExample', ['ngRoute', 'ngResource'])
   		  params: {"message":$scope.message},
   		}).then(function successCallback(response) {
   			$scope.message = "";
+			$http({
+				  method: 'GET',
+				  url: '/'+$scope.name+'/tweets'
+				}).then(function successCallback(response) {
+					$scope.tweets = response.data;
+				  }, function errorCallback(response) {
+				});
   		  }, function errorCallback(response) {
   		});
      }

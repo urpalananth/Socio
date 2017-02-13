@@ -11,5 +11,5 @@ import com.socio.beans.UserProfile;
 
 public interface TweetRepository extends JpaRepository<Tweet, Long>{
 	@Query(value="SELECT * FROM TWEET where tweeter_id in (SELECT u.id FROM user_profile u LEFT JOIN connection c WHERE c.followed_by_id = u.id AND c.follower_id = :userId)", nativeQuery=true)
-	Collection<Tweet> findTweetsByTweeter(@Param("userId") Long userId);
+	Collection<Tweet> findTweetsByUser(@Param("userId") Long userId);
 }

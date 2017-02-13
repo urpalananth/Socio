@@ -4,8 +4,6 @@
  */
 package com.socio.controllers;
 
-import java.security.Principal;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.ldap.userdetails.LdapUserDetailsImpl;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.socio.beans.UserProfile;
+import com.socio.exceptions.UserNotFoundException;
 import com.socio.repo.UserProfileRepository;
 
 @Controller
@@ -29,20 +28,10 @@ public class LoginController {
 	public @ResponseBody UserProfile getLoggedInUser(){
 		LdapUserDetailsImpl user = (LdapUserDetailsImpl)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if(user == null){
-			System.out.println("--> No user");
-			return null;
+			throw new UserNotFoundException(" user not logged in");
 		}
 		String userId = user.getUsername();
-		
-		userRepo.findAll().size();
-		
 		return this.userRepo
-			.findByName(userId);
-	}
-	
-	private void validateUser(Principal principal) {
-		String userId = principal.getName();
-		this.userRepo
 			.findByName(userId);
 	}
 }
