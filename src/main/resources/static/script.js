@@ -6,29 +6,29 @@ angular.module('ngRouteExample', ['ngRoute', 'ngResource'])
      $scope.$route = $route;
      $scope.$location = $location;
      $scope.$routeParams = $routeParams;
-          
+     $scope.name = '';
      $http.get('/principal').then(function(response){
 			$rootScope.principal = response.data;
+			$scope.name = response.data.name;
 	}, function(response){});
  })
  
  .controller('TweetController', function($scope, $routeParams, $http, $rootScope) {
-     $scope.name = 'TweetController';
+     $scope.name = '';
      $scope.params = $routeParams;
      
      $scope.message = "";
      $http.get('/principal').then(function(response){
 			$rootScope.principal = response.data;
-			$scope.principal = response.data;
+			$scope.name = response.data.name;
+			$http({
+				  method: 'GET',
+				  url: '/'+$scope.name+'/tweets'
+				}).then(function successCallback(response) {
+					$scope.tweets = response.data;
+				  }, function errorCallback(response) {
+				});
 	}, function(response){});
-     
-		$http({
-			  method: 'GET',
-			  url: '/'+$rootScope.principal.name+'/tweets'
-			}).then(function successCallback(response) {
-				$scope.tweets = response.data;
-			  }, function errorCallback(response) {
-			});
      
      $scope.postTweet= function(){
     	 console.log($scope.message);
