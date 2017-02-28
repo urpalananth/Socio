@@ -1,5 +1,7 @@
 # Socio
 
+![screen shot 2017-02-13 at 2 30 12 pm](https://cloud.githubusercontent.com/assets/7194195/23398648/34e46f76-fd52-11e6-9e5c-ee94bf153e1b.png)
+
 This is a twitter like application, with completed use cses of ..
 - User can follow other users
 - User can tweet.
